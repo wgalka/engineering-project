@@ -1,0 +1,160 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 610" width="100%" height="auto" font-family="Segoe UI, Roboto, Arial, sans-serif">
+  <defs>
+    <marker id="arr-c" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#dc2626"/>
+    </marker>
+    <marker id="arr-n" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#475569"/>
+    </marker>
+  </defs>
+
+  <rect width="1200" height="610" rx="8" fill="#ffffff" stroke="#cbd5e1" stroke-width="2"/>
+
+  <!-- Top Title Bar -->
+  <rect x="0" y="0" width="1200" height="44" rx="8" fill="#0f172a"/>
+  <rect x="0" y="20" width="1200" height="24" fill="#0f172a"/>
+  <text x="18" y="27" fill="#ffffff" font-size="15" font-weight="700">DOBRY PRZYKŁAD 2: System detekcji usterek z kamer przemysłowych (Zespół 4-os., Spike badawczy + 3 strumienie równoległe)</text>
+  <rect x="1035" y="10" width="150" height="24" rx="12" fill="#16a34a"/>
+  <text x="1110" y="26" fill="#ffffff" font-size="12" font-weight="700" text-anchor="middle">WZORZEC POPRAWNY</text>
+
+  <!-- Table & Timeline Headers -->
+  <rect x="0" y="44" width="1200" height="42" fill="#f1f5f9" stroke="#cbd5e1" stroke-width="1"/>
+  <text x="12" y="70" fill="#1e293b" font-size="12" font-weight="700">ID / Zadanie i sprawdzalny artefakt wyjściowy</text>
+  <text x="320" y="70" fill="#1e293b" font-size="12" font-weight="700">Właśc.</text>
+  <text x="380" y="70" fill="#1e293b" font-size="12" font-weight="700">PERT [h]</text>
+  <text x="445" y="70" fill="#1e293b" font-size="12" font-weight="700">Poprz.</text>
+
+  <line x1="312" y1="44" x2="312" y2="550" stroke="#e2e8f0"/>
+  <line x1="374" y1="44" x2="374" y2="550" stroke="#e2e8f0"/>
+  <line x1="438" y1="44" x2="438" y2="550" stroke="#e2e8f0"/>
+  <line x1="495" y1="44" x2="495" y2="550" stroke="#94a3b8" stroke-width="2"/>
+
+  <!-- 10 Weeks columns from x=495 to 1195 (70px per week) -->
+  <g font-size="11" fill="#334155" font-weight="600" text-anchor="middle">
+    <text x="530" y="68">T1 (List.)</text>
+    <text x="600" y="68">T2 (List.)</text>
+    <text x="670" y="68">T3 (List.)</text>
+    <text x="740" y="68">T4 (List.)</text>
+    <text x="810" y="68">T5 (Grud.)</text>
+    <text x="880" y="68">T6 (Grud.)</text>
+    <text x="950" y="68">T7 (Grud.)</text>
+    <text x="1020" y="68" fill="#b45309">Święta</text>
+    <text x="1090" y="68">T8 (Stycz.)</text>
+    <text x="1160" y="68">T9 (Stycz.)</text>
+  </g>
+
+  <rect x="985" y="86" width="70" height="464" fill="#fef3c7" opacity="0.5"/>
+
+  <g stroke="#e2e8f0" stroke-width="1">
+    <line x1="565" y1="44" x2="565" y2="550"/>
+    <line x1="635" y1="44" x2="635" y2="550"/>
+    <line x1="705" y1="44" x2="705" y2="550"/>
+    <line x1="775" y1="44" x2="775" y2="550"/>
+    <line x1="845" y1="44" x2="845" y2="550"/>
+    <line x1="915" y1="44" x2="915" y2="550"/>
+    <line x1="985" y1="44" x2="985" y2="550"/>
+    <line x1="1055" y1="44" x2="1055" y2="550"/>
+    <line x1="1125" y1="44" x2="1125" y2="550"/>
+  </g>
+
+  <g font-size="11.5" fill="#1e293b">
+    <!-- Row 1: Spike & Analysis -->
+    <rect x="0" y="86" width="495" height="26" fill="#f8fafc"/>
+    <text x="10" y="103" font-weight="700">1. Eksperyment techniczny (Spike) i specyfikacja</text>
+    <rect x="500" y="95" width="132" height="6" fill="#0f172a"/>
+
+    <text x="20" y="129">S01. [SPIKE] Test inferencji modelu YOLO na CPU (limit 4h)</text>
+    <text x="320" y="129">Dawid</text><text x="380" y="129">4 h</text><text x="445" y="129">—</text>
+    <rect x="500" y="117" width="45" height="13" rx="2" fill="#8b5cf6" stroke="#6d28d9"/>
+
+    <text x="20" y="155">T01. Przygotować zbiór 300 zdjęć testowych i etykiety</text>
+    <text x="320" y="155">Kasia</text><text x="380" y="155">8 h</text><text x="445" y="155">—</text>
+    <rect x="500" y="143" width="90" height="13" rx="2" fill="#ef4444" stroke="#b91c1c"/>
+
+    <text x="20" y="181">T02. Zdefiniować architekturę REST + kolejka zadań</text>
+    <text x="320" y="181">Marek</text><text x="380" y="181">6 h</text><text x="445" y="181">S01</text>
+    <rect x="545" y="169" width="85" height="13" rx="2" fill="#ef4444" stroke="#b91c1c"/>
+
+    <text x="20" y="207" font-weight="700" fill="#b91c1c">M1. Kamień milowy: Potwierdzona wykonalność + zbiór danych</text>
+    <text x="320" y="207">—</text><text x="380" y="207">0 h</text><text x="445" y="207">T01,T02</text>
+    <polygon points="633,196 640,203 633,210 626,203" fill="#b91c1c"/>
+
+    <!-- Row 2: Parallel Streams -->
+    <rect x="0" y="216" width="495" height="26" fill="#f8fafc"/>
+    <text x="10" y="233" font-weight="700">2. Równoległa budowa komponentów (ML / Backend / Frontend)</text>
+    <rect x="635" y="225" width="208" height="6" fill="#0f172a"/>
+
+    <text x="20" y="259">T03. Dostroić model detekcji i wyeksportować ONNX</text>
+    <text x="320" y="259">Dawid</text><text x="380" y="259">12 h</text><text x="445" y="259">M1</text>
+    <rect x="635" y="247" width="135" height="13" rx="2" fill="#ef4444" stroke="#b91c1c"/>
+
+    <text x="20" y="285">T04. Zbudować serwis FastAPI + zapis wyników w PostgreSQL</text>
+    <text x="320" y="285">Marek</text><text x="380" y="285">10 h</text><text x="445" y="285">M1</text>
+    <rect x="635" y="273" width="115" height="13" rx="2" fill="#3b82f6" stroke="#1d4ed8"/>
+
+    <text x="20" y="311">T05. Zbudować dashboard operatora (podgląd klatek i alertów)</text>
+    <text x="320" y="311">Piotr</text><text x="380" y="311">10 h</text><text x="445" y="311">M1</text>
+    <rect x="635" y="299" width="120" height="13" rx="2" fill="#3b82f6" stroke="#1d4ed8"/>
+
+    <text x="20" y="337">T06. Przygotować skrypt walidacji metryk Precision/Recall</text>
+    <text x="320" y="337">Kasia</text><text x="380" y="337">6 h</text><text x="445" y="337">M1</text>
+    <rect x="660" y="325" width="85" height="13" rx="2" fill="#3b82f6" stroke="#1d4ed8"/>
+
+    <text x="20" y="363">T07. Połączyć pipeline (Kamera → FastAPI → ONNX → UI)</text>
+    <text x="320" y="363">Marek</text><text x="380" y="363">8 h</text><text x="445" y="363">T03,T04,T05</text>
+    <rect x="770" y="351" width="72" height="13" rx="2" fill="#ef4444" stroke="#b91c1c"/>
+
+    <text x="20" y="389" font-weight="700" fill="#b91c1c">M2. Kamień milowy: Pierwszy przyrost detekcji na żywo (MVP)</text>
+    <text x="320" y="389">—</text><text x="380" y="389">0 h</text><text x="445" y="389">T07</text>
+    <polygon points="845,378 852,385 845,392 838,385" fill="#b91c1c"/>
+
+    <!-- Row 3: Verification, Buffer & Delivery -->
+    <rect x="0" y="398" width="495" height="26" fill="#f8fafc"/>
+    <text x="10" y="415" font-weight="700">3. Weryfikacja jakościowa, dokumentacja LaTeX i oddanie</text>
+    <rect x="845" y="407" width="325" height="6" fill="#0f172a"/>
+
+    <text x="20" y="441">T08. Pomiary czasu odpowiedzi (RNF-01 &lt; 500 ms) i optymalizacja</text>
+    <text x="320" y="441">Dawid</text><text x="380" y="441">8 h</text><text x="445" y="441">M2,T06</text>
+    <rect x="845" y="429" width="95" height="13" rx="2" fill="#ef4444" stroke="#b91c1c"/>
+
+    <text x="20" y="467">T09. Konteneryzacja Docker Compose i testy na czystej maszynie</text>
+    <text x="320" y="467">Piotr</text><text x="380" y="467">6 h</text><text x="445" y="467">M2</text>
+    <rect x="845" y="455" width="80" height="13" rx="2" fill="#3b82f6" stroke="#1d4ed8"/>
+
+    <text x="20" y="493">T10. Dokumentacja rozdz. 4.2–4.5 LaTeX (wykresy metryk i zrzuty)</text>
+    <text x="320" y="493">Kasia</text><text x="380" y="493">10 h</text><text x="445" y="493">T08,T09</text>
+    <rect x="940" y="481" width="45" height="13" rx="2" fill="#ef4444" stroke="#b91c1c"/>
+    <rect x="1055" y="481" width="60" height="13" rx="2" fill="#ef4444" stroke="#b91c1c"/>
+
+    <text x="20" y="519">T11. Bufor ryzyka integracyjnego i przygotowanie demonstracji</text>
+    <text x="320" y="519">Zespół</text><text x="380" y="519">6 h</text><text x="445" y="519">T10</text>
+    <rect x="1115" y="507" width="48" height="13" rx="2" fill="#f59e0b" stroke="#b45309"/>
+
+    <text x="20" y="545" font-weight="700" fill="#b91c1c">M3. Kamień milowy: Oddanie projektu i obrona końcowa</text>
+    <text x="320" y="545">—</text><text x="380" y="545">0 h</text><text x="445" y="545">T11</text>
+    <polygon points="1168,534 1175,541 1168,548 1161,541" fill="#b91c1c"/>
+  </g>
+
+  <!-- Key Arrows -->
+  <g fill="none" stroke-width="1.5">
+    <path d="M 545 123 L 552 123 L 552 169" stroke="#dc2626" marker-end="url(#arr-c)"/>
+    <path d="M 630 175 L 633 175 L 633 194" stroke="#dc2626" marker-end="url(#arr-c)"/>
+    <path d="M 633 210 L 638 247" stroke="#dc2626" marker-end="url(#arr-c)"/>
+    <path d="M 770 253 L 775 253 L 775 351" stroke="#dc2626" marker-end="url(#arr-c)"/>
+    <path d="M 750 279 L 775 279 L 775 351" stroke="#475569" marker-end="url(#arr-n)"/>
+    <path d="M 755 305 L 775 305 L 775 351" stroke="#475569" marker-end="url(#arr-n)"/>
+    <path d="M 842 357 L 845 357 L 845 376" stroke="#dc2626" marker-end="url(#arr-c)"/>
+    <path d="M 845 392 L 848 429" stroke="#dc2626" marker-end="url(#arr-c)"/>
+    <path d="M 940 435 L 945 435 L 945 481" stroke="#dc2626" marker-end="url(#arr-c)"/>
+    <path d="M 1115 487 L 1120 487 L 1120 507" stroke="#dc2626" marker-end="url(#arr-c)"/>
+  </g>
+
+  <!-- Bottom Legend -->
+  <rect x="0" y="555" width="1200" height="55" fill="#f8fafc"/>
+  <rect x="18" y="572" width="22" height="12" rx="2" fill="#8b5cf6" stroke="#6d28d9"/>
+  <text x="46" y="582" font-size="11.5" fill="#334155" font-weight="600">Zadanie badawcze Spike (weryfikacja ryzyka na starcie)</text>
+  <rect x="370" y="572" width="22" height="12" rx="2" fill="#ef4444" stroke="#b91c1c"/>
+  <text x="398" y="582" font-size="11.5" fill="#334155" font-weight="600">Ścieżka krytyczna (S01 → T02 → M1 → T03 → T07 → M2 → T08 → T10 → T11 → M3)</text>
+  <rect x="880" y="572" width="22" height="12" rx="2" fill="#3b82f6" stroke="#1d4ed8"/>
+  <text x="908" y="582" font-size="11.5" fill="#334155">Strumienie równoległe (4 osoby pracują naraz w T3–T5)</text>
+</svg>

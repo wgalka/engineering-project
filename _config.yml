@@ -1,0 +1,26 @@
+title: Projekt inżynierski
+description: Materiały laboratoryjne dla III roku Informatyki, semestr zimowy 2026/2027
+lang: pl-PL
+
+remote_theme: wgalka/instructions-jekyll-theme
+
+plugins:
+  - jekyll-remote-theme
+
+markdown: kramdown
+kramdown:
+  input: GFM
+
+defaults:
+  - scope:
+      path: ""
+      type: pages
+    values:
+      layout: default
+
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - README.md
+  - priv
+  - tmp
