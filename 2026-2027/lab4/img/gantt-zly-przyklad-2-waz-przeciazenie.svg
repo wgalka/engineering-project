@@ -77,8 +77,8 @@
 
   <!-- Summary explanation box -->
   <rect x="16" y="356" width="1118" height="98" rx="6" fill="#fef2f2" stroke="#f87171"/>
-  <text x="30" y="379" fill="#991b1b" font-size="13" font-weight="700">Jak naprawić oba błędy przed oddaniem laboratorium?</text>
-  <text x="30" y="401" fill="#7f1d1d" font-size="12">• Naprawa Błędu A: Po zakończeniu T1 (Wymagania) puśćcie równolegle T2 (Baza — Bartek), T3 (Makiety — Celina) oraz T4 (Repozytorium i CI — Dawid). Zaoszczędzicie 3 tygodnie kalendarzowe.</text>
-  <text x="30" y="421" fill="#7f1d1d" font-size="12">• Naprawa Błędu B: Otwórzcie zakładkę „Wykres zasobów” (Resource Chart). Jeśli widzicie czerwony blok (&gt;100%), przekażcie T06 Dawidowi, a T05 przesuńcie na kolejny tydzień po T04.</text>
-  <text x="30" y="441" fill="#7f1d1d" font-size="12">• Pamiętajcie: równoległe paski na wykresie Gantta mają sens TYLKO wtedy, gdy wykonują je różne osoby (lub mieszczą się w tygodniowym limicie godzin tej samej osoby).</text>
+  <text x="30" y="379" fill="#991b1b" font-size="13" font-weight="700">Sposób korekty obu błędów:</text>
+  <text x="30" y="401" fill="#7f1d1d" font-size="12">• Korekta Błędu A: Po zakończeniu T1 (Wymagania) należy zaplanować równolegle T2 (Baza — Bartek), T3 (Makiety — Celina) oraz T4 (Repozytorium i CI — Dawid).</text>
+  <text x="30" y="421" fill="#7f1d1d" font-size="12">• Korekta Błędu B: W widoku „Wykres zasobów” (Resource Chart) należy usunąć przeciążenia (&gt;100%) — przekazać T06 Dawidowi, a T05 przesunąć po T04.</text>
+  <text x="30" y="441" fill="#7f1d1d" font-size="12">• Zasada: Równoległe paski na wykresie Gantta są wykonalne tylko wtedy, gdy przypisano je różnym osobom lub mieszczą się w tygodniowym limicie godzin wykonawcy.</text>
 </svg>

@@ -3,104 +3,98 @@ title: Harmonogram, narzędzia i diagramy projektu
 permalink: /2026-2027/narzedzia/
 ---
 
-# Praca domowa: harmonogram Gantta i diagramy projektu
+# Przewodnik: harmonogram Gantta i dobór diagramów projektowych
 
-**Pełne laboratorium: [Diagram Gantta krok po kroku](../lab4/gantt-krok-po-kroku.md)** — planowanie pracy, przykład z obliczeniami, ścieżki w GanttProject i Asana, obciążenie, ryzyka, raportowanie i kryteria oddania. Zacznijcie od tej instrukcji. Poniżej znajdziecie skrót zasad oraz przewodnik po dodatkowych diagramach.
+**Pełna instrukcja laboratoryjna: [Diagram Gantta krok po kroku](../lab4/gantt-krok-po-kroku.md)** — planowanie pracy, model referencyjny z obliczeniami, instrukcje dla programów GanttProject, ProjectLibre, Mermaid i Asana, kontrola obciążenia, analiza ryzyk, raportowanie dwutygodniowe oraz przykłady wzorcowych i błędnych wykresów. Poniżej znajduje się podsumowanie zasad oraz przewodnik doboru dodatkowych diagramów projektowych.
 
-Ten przewodnik dotyczy laboratorium 4. Sam raport postępu i aktualizacja dokumentacji są wymagane na **każdym** laboratorium; zobacz [strukturę dokumentacji i wzór raportu](../dokumentacja/).
+Raport postępu i aktualizacja dokumentacji obowiązują na każdym laboratorium; szczegółowy układ rozdziałów znajduje się w [przewodniku dokumentacji i raportowania](../dokumentacja/).
 
 ## Cel
 
-Przed laboratorium 4 przygotujcie realistyczny plan prac i wybierzcie diagramy, które wyjaśniają wasz system. Gantt pokazuje kolejność i terminy zadań; diagramy analityczne i projektowe pomagają zrozumieć wymagania, dane, zachowanie i budowę rozwiązania.
+Przygotowanie realistycznego planu prac oraz dobór diagramów wyjaśniających budowę i działanie projektowanego systemu. Wykres Gantta określa kolejność i terminy zadań zespołu, natomiast diagramy analityczne i projektowe opisują wymagania, dane, zachowanie i architekturę rozwiązania.
 
-## Jak przygotować dobry harmonogram Gantta
+## Zasady przygotowania harmonogramu Gantta
 
-### 1. Zacznijcie od rezultatów
+### 1. Określenie rezultatów projektu
 
-Ustalcie, co będzie gotowe na koniec projektu i jakie rezultaty pośrednie są potrzebne: zaakceptowany zakres, makieta, działający główny scenariusz, zintegrowana wersja, testy, dokumentacja i prezentacja. Dopiero potem rozpiszcie prace prowadzące do tych rezultatów.
+W pierwszej kolejności należy zdefiniować produkt końcowy oraz rezultaty pośrednie: zatwierdzony zakres, makiety, działający główny scenariusz (pierwszy przyrost), wersję zintegrowaną, testy, dokumentację oraz prezentację. Dopiero na tej podstawie definiowane są zadania prowadzące do poszczególnych rezultatów.
 
-### 2. Podzielcie pracę na zadania
+### 2. Podział pracy na zadania (WBS)
 
-Pogrupujcie zadania, np. analiza, projekt, implementacja, integracja, testy, dokumentacja i prezentacja. Nazwa powinna opisywać konkretną pracę oraz wynik: „Zaimplementować wyszukiwanie po nazwie” zamiast „Programowanie”. Nie rozpisujcie każdej drobnej czynności; zadania mają być na tyle małe, by dało się regularnie ocenić postęp.
+Zadania należy pogrupować w etapy: analiza, projekt, pierwszy przyrost, rozbudowa, integracja i testy, dokumentacja i oddanie. Nazwa każdego zadania powinna wskazywać czynność i sprawdzalny rezultat (np. *„Zaimplementować wyszukiwanie sal po parametrach”* zamiast *„Programowanie”*). Zadania powinny mieć szczegółowość pozwalającą na ocenę postępu w cyklu dwutygodniowym.
 
-Każde zadanie powinno mieć nazwę, oczekiwany rezultat, czas trwania, osobę odpowiedzialną, poprzedniki i sprawdzalne kryterium ukończenia. Czas trwania zadania to czas kalendarzowy planowanej pracy, a nie suma roboczogodzin całego zespołu.
+Każde zadanie musi posiadać nazwę, oczekiwany rezultat, nakład pracy w godzinach, czas trwania w dniach, przypisaną osobę odpowiedzialną, poprzedniki oraz sprawdzalne kryterium ukończenia. Czas trwania oznacza czas kalendarzowy realizacji zadania przy dostępności danego wykonawcy, a nie sumę roboczogodzin zespołu.
 
-### 3. Pokażcie zależności i kamienie milowe
+### 3. Zależności i kamienie milowe
 
-Przykładowy łańcuch: doprecyzowanie wymagań → model danych → implementacja zapisu i odczytu → integracja → test głównego scenariusza. Zależność koniec–początek oznacza, że następne zadanie rusza po zakończeniu poprzedniego. Nie łączcie wszystkich zadań w jeden łańcuch, jeśli część prac może być wykonana równolegle.
+Przykładowy ciąg zależności: doprecyzowanie wymagań → model danych → implementacja zapisu i odczytu → integracja → test głównego scenariusza. Relacja koniec–początek (`FS`) oznacza, że zadanie następne rozpoczyna się po ukończeniu poprzednika. Nie należy łączyć wszystkich zadań w jeden szeregowy łańcuch, jeżeli część prac może przebiegać równolegle.
 
-Kamień milowy jest punktem kontrolnym bez czasu trwania, np. „zaakceptowany zakres”, „pierwsza zintegrowana wersja” lub „gotowość do prezentacji”. Uwzględnijcie integrację, testy, poprawki, dokumentację i rezerwę na ryzyka. Harmonogram, w którym cały semestr zajmuje tylko programowanie, jest niekompletny.
+Kamień milowy jest punktem kontrolnym o zerowym czasie trwania (`0 dni`), np. *„M1: Zatwierdzony zakres i ERD”*, *„M2: Pierwszy przyrost zintegrowany”* lub *„M3: Gotowość do obrony”*. W harmonogramie należy uwzględnić integrację, testy, poprawki, dokumentację oraz rezerwę na ryzyka.
 
-### 4. Sprawdźcie realizm
+### 4. Weryfikacja wykonalności planu
 
-- Użyjcie rzeczywistych dat semestru i terminów spotkań.
-- Uwzględnijcie zajęcia, egzaminy, dostępność członków zespołu i zależności zewnętrzne.
-- Porównajcie obciążenie osób; kluczowe prace nie powinny zależeć wyłącznie od jednej osoby.
-- Zostawcie uzasadnioną rezerwę na ryzyka i poprawki.
-- Podzielcie długie prace na przyrosty, które można wcześnie zademonstrować.
+- Zastosować rzeczywiste daty semestru, przerw świątecznych i kolokwiów.
+- Uwzględnić tygodniową dostępność godzinową każdego członka zespołu.
+- Zweryfikować obciążenie zasobów — suma godzin zadań przypisanych jednej osobie w danym tygodniu nie może przekraczać jej dostępności.
+- Dodać uzasadnioną rezerwę czasową przed kluczowymi kamieniami milowymi.
+- Zaplanować pierwszy działający przyrost odpowiednio wcześnie przed końcem semestru.
 
-### 5. Zapiszcie plan bazowy i aktualizujcie go
+### 5. Zapis planu bazowego i aktualizacje dwutygodniowe
 
-Po uzgodnieniu planu zachowajcie wersję bazową. Na początku każdego laboratorium raportujcie, co ukończono, co się przesunęło i jaki wpływ ma zmiana na kolejne zadania; po zajęciach dopiszcie tę informację do dziennika i rozdziału 4.3 dokumentacji. Po laboratorium 4 składajcie takie aktualizacje co dwa tygodnie aż do końca roku akademickiego 2026/2027, również po laboratorium 5. Nie przesuwajcie po cichu starych dat, żeby plan wyglądał na wykonany; zapiszcie aktualizację i przyczynę.
+Po zatwierdzeniu harmonogramu należy zapisać wersję bazową (*Baseline*). Po Laboratorium 4 aktualizacje postępu wykonywane są co dwa tygodnie aż do końca roku akademickiego 2026/2027 (również po Laboratorium 5). W każdym przeglądzie należy porównać stan rzeczywisty z planem bazowym, udokumentować wykonane prace, zapisać przyczyny odchyleń oraz zaktualizować dziennik raportów i rozdział 4.3 dokumentacji LaTeX.
 
-## Przykładowy szkielet
-
-To punkt wyjścia, nie gotowy harmonogram do skopiowania.
+## Przykładowy układ etapów WBS
 
 | Etap | Przykładowe zadania | Rezultat / zależność |
 |---|---|---|
-| Analiza | Research, rozmowy z użytkownikami, wymagania | Zatwierdzony zakres i kryteria sukcesu |
-| Projekt | Makieta, przypadki użycia, model danych, decyzje architektoniczne | Gotowe wejście do implementacji; część prac może iść równolegle |
-| Pierwszy przyrost | Jeden główny scenariusz od interfejsu do danych | Wczesna demonstracja i informacja zwrotna |
-| Rozbudowa | Kolejne funkcje, obsługa błędów, integracje | Funkcje powiązane z wymaganiami |
-| Integracja i testy | Testy scenariuszy, poprawki, wymagania jakościowe | Wersja gotowa do oceny |
-| Oddanie | Dokumentacja, instrukcja uruchomienia, prezentacja | Kompletne i odtwarzalne oddanie |
+| Analiza | Analiza źródeł, doprecyzowanie wymagań i kryteriów odbioru | Zatwierdzony zakres MVP i lista wymagań |
+| Projekt | Makiety interfejsu, przypadki użycia, model danych ERD, architektura | Dane wejściowe do implementacji; prace mogą iść równolegle |
+| Pierwszy przyrost | Główny scenariusz od interfejsu przez API do bazy danych | Wczesna weryfikacja działania systemu |
+| Rozbudowa | Pozostałe wymagania funkcjonalne, walidacja, obsługa błędów | Funkcje powiązane z identyfikatorami wymagań |
+| Integracja i testy | Testy scenariuszy użycia, testy niefunkcjonalne, poprawki błędów | Zweryfikowana wersja systemu |
+| Oddanie | Dokumentacja LaTeX (rozdz. 4.1–4.5), instrukcja uruchomienia, prezentacja | Kompletny i odtwarzalny pakiet końcowy |
 
-## Narzędzia do harmonogramu (Open Source i komercyjne)
+## Narzędzia do harmonogramu (open source i komercyjne)
 
-Szczegółowe porównanie oraz instrukcje krok po kroku dla każdego z narzędzi znajdziecie w [Części III instrukcji laboratoryjnej](../lab4/gantt-krok-po-kroku.md#część-iii-wybierzcie-narzędzie-i-wprowadźcie-harmonogram-krok-7):
+Szczegółowe porównanie oraz instrukcje krok po kroku dla poszczególnych narzędzi znajdują się w [Części III instrukcji laboratoryjnej](../lab4/gantt-krok-po-kroku.md#część-iii-wybór-narzędzia-i-wprowadzenie-harmonogramu-krok-7):
 
-- **[GanttProject](https://www.ganttproject.biz/download) (Open Source, GPLv3)** — rekomendowane narzędzie desktopowe z hierarchią WBS, zależnościami, kamieniami milowymi, wykresem obciążenia zasobów, ścieżką krytyczną, liniami bazowymi i eksportem PDF/PNG; działa lokalnie na Windows, macOS i Linux.
-- **[ProjectLibre Desktop](https://projectlibre.com/projectlibre-desktop/) (Open Source, CPAL)** — zaawansowane narzędzie desktopowe rozróżniające nakład godzinowy (*Work*) i czas trwania (*Duration*), wyposażone w sieć PERT/CPM, zapasy czasu (*Slack*) i bazę porównawczą; [dokumentacja](https://projectlibre.com/projectlibre-documentation/).
-- **[Mermaid.js](https://mermaid.js.org/syntax/gantt.html) (Open Source, MIT)** — definicja wykresu Gantta jako kodu tekstowego w repozytorium Git (świetne uzupełnienie do `README.md` i raportów, wymagające ręcznego pilnowania tabeli obciążenia zasobów).
-- **Narzędzia komercyjne / chmurowe (Asana, Jira Timeline/Plans, MS Project, ClickUp)** — możecie z nich skorzystać, jeśli zespół ma aktywny dostęp (np. edukacyjny lub okres próbny), pod warunkiem zachowania pełnego eksportu danych oraz czytelnych wydruków PDF/PNG w repozytorium.
+- **[GanttProject](https://www.ganttproject.biz/download) (Open Source, GPLv3)** — program desktopowy obsługujący hierarchię WBS, zależności, kamienie milowe, wykres obciążenia zasobów, ścieżkę krytyczną, linie bazowe i eksport PDF/PNG (Windows, macOS, Linux).
+- **[ProjectLibre Desktop](https://projectlibre.com/projectlibre-desktop/) (Open Source, CPAL)** — program desktopowy rozróżniający nakład godzinowy (*Work*) i czas trwania (*Duration*), wyposażony w sieć PERT/CPM, wyliczanie zapasów czasu (*Slack*) i bazę porównawczą; [dokumentacja](https://projectlibre.com/projectlibre-documentation/).
+- **[Mermaid.js](https://mermaid.js.org/syntax/gantt.html) (Open Source, MIT)** — tekstowy zapis wykresu Gantta w repozytorium Git (uzupełnienie dokumentacji wymagające osobnej tabeli obciążenia zasobów).
+- **Narzędzia komercyjne (Asana, Jira Timeline/Plans, MS Project, ClickUp)** — możliwe do wykorzystania przy posiadaniu aktywnego dostępu zespołowego, pod warunkiem zachowania pełnego eksportu danych oraz czytelnych wydruków PDF/PNG w repozytorium.
 
-Wybierzcie jedną główną ścieżkę narzędziową i zachowajcie plik źródłowy oraz eksport PDF/PNG. Zadbajcie o to, aby na wyeksportowanym rysunku każdy czytelnik bez trudu odczytał nazwy zadań, daty, strzałki zależności, kamienie milowe i odpowiedzialności.
+Należy wybrać jedną główną ścieżkę narzędziową i zachować plik źródłowy oraz eksport PDF/PNG z czytelnymi nazwami zadań, datami, strzałkami zależności, kamieniami milowymi i przypisanymi osobami.
 
-## Jak dobrać diagramy
+## Dobór dodatkowych diagramów projektowych
 
-Nie rysujcie wszystkich rodzajów diagramów. Wybierzcie diagramy, które odpowiadają na konkretne pytania projektowe.
+Nie należy tworzyć wszystkich rodzajów diagramów. Należy wybrać diagramy odpowiadające na istotne pytania projektowe dla danego systemu.
 
-| Diagram | Pytanie, na które odpowiada | Kiedy go wybrać |
+| Diagram | Pytanie projektowe | Zastosowanie |
 |---|---|---|
-| Kontekst / granica systemu | Co należy do systemu, kto z niego korzysta i z czym się komunikuje? | Gdy zakres lub integracje są niejasne. |
-| Przypadków użycia (UML) | Jakie cele użytkownicy realizują w systemie? | Wymagany w §2.2; pokazuje aktorów i cele, nie szczegóły ekranów. |
-| Aktywności (UML) | Jak przebiega proces i gdzie są decyzje? | Dla złożonej logiki lub procesu biznesowego. |
-| Sekwencji (UML) | Kto z kim i w jakiej kolejności wymienia komunikaty? | Dla jednego ważnego scenariusza. |
-| Klas (UML) lub ERD | Jakie pojęcia, dane i relacje występują w systemie? | Gdy aplikacja przechowuje powiązane dane. ERD pokazuje dane, nie przepływ ekranów. |
-| Komponentów | Z jakich większych części składa się rozwiązanie i jakie mają interfejsy? | Gdy są np. frontend, API, baza, model AI lub usługi zewnętrzne. |
-| Wdrożenia (UML) | Gdzie działają elementy i jak są połączone? | Gdy istotne są urządzenia, serwery lub środowiska. |
-| Stanów (UML) | Jak zmienia się stan konkretnego obiektu? | Dla cyklu życia zamówienia, zgłoszenia lub zadania. |
-
-Na początek zwykle wystarczą przypadki użycia, model danych jeśli projekt przechowuje dane oraz diagram aktywności albo sekwencji dla głównego scenariusza. Diagram architektury lub wdrożenia dodajcie, gdy wyjaśnia istotną decyzję. Gantt opisuje terminy prac i nie zastępuje diagramu procesu ani UML.
+| Kontekstu / granicy systemu | Co należy do systemu, kto z niego korzysta i z jakimi usługami się komunikuje? | Gdy zakres systemu lub integracje zewnętrzne wymagają rozgraniczenia. |
+| Przypadków użycia (UML) | Jakie cele realizują użytkownicy w systemie? | Wymagany w rozdziale 4.1; przedstawia aktorów i ich cele, bez szczegółów interfejsu. |
+| Aktywności (UML) | Jak przebiega proces i w jakich punktach podejmowane są decyzje? | Dla złożonej logiki biznesowej lub wieloetapowego algorytmu. |
+| Sekwencji (UML) | W jakiej kolejności komponenty wymieniają komunikaty? | Dla kluczowego scenariusza obejmującego kilka warstw systemu. |
+| Klas (UML) lub ERD | Jakie encje, atrybuty i relacje występują w bazie danych? | Gdy aplikacja przetwarza i składuje powiązane dane. |
+| Komponentów | Z jakich modułów składa się rozwiązanie i jakie mają interfejsy? | Gdy system dzieli się na frontend, API, bazę danych, moduł AI lub usługi zewnętrzne. |
+| Wdrożenia (UML) | Na jakich węzłach i w jakich środowiskach uruchamiane są elementy systemu? | Gdy istotna jest konfiguracja serwerów, kontenerów lub urządzeń. |
+| Stanów (UML) | Jak zmienia się stan wybranego obiektu w cyklu życia? | Dla obiektów o wielu stanach (np. rezerwacja, zamówienie, zgłoszenie). |
 
 ## Narzędzia do diagramów i dokumentacji
 
-- [diagrams.net / draw.io](https://www.drawio.com/docs/integrations/) — edytor online oraz aplikacja desktopowa do pracy offline; pliki można zachować w repozytorium.
-- **Overleaf** — edycja i kompilacja LaTeX w przeglądarce; skorzystajcie z przekazanego ZIP-a szablonu UR.
-- Zachowujcie format edytowalny (np. `.drawio`) oraz eksport czytelny w PDF. Każdy diagram opiszcie w tekście.
+- [diagrams.net / draw.io](https://www.drawio.com/docs/integrations/) — edytor online oraz aplikacja desktopowa do pracy lokalnej; pliki źródłowe `.drawio` należy przechowywać w repozytorium.
+- **Overleaf / LaTeX** — przygotowanie dokumentacji na podstawie szablonu UR.
+- Dla każdego diagramu należy zachować plik edytowalny oraz eksport PDF/PNG i umieścić odwołanie wraz z opisem w tekście dokumentacji.
 
-## Zadanie do oddania
+## Zakres przygotowania na Laboratorium 4
 
-Przed laboratorium 4 przygotujcie:
-
-1. harmonogram od aktualnej daty do oddania projektu;
-2. zadania z czasem, zależnościami, odpowiedzialnymi i sprawdzalnymi rezultatami;
-3. co najmniej trzy kamienie milowe oraz zadania na testy, integrację, dokumentację i prezentację;
-4. co najmniej jeden dodatkowy diagram wraz z krótkim uzasadnieniem jego wyboru;
-5. pliki źródłowe i eksport diagramu oraz harmonogramu;
-6. dwa najważniejsze ryzyka, ich wpływ na plan i sposób reakcji.
+1. Harmonogram od bieżącej daty do końcowego oddania projektu.
+2. Zadania z określonym nakładem pracy, czasem trwania, zależnościami, właścicielami i kryteriami ukończenia.
+3. Co najmniej trzy kamienie milowe oraz zadania obejmujące integrację, testy, dokumentację i prezentację.
+4. Co najmniej jeden dodatkowy diagram techniczny do rozdziału 4.2 wraz z uzasadnieniem wyboru.
+5. Pliki źródłowe i eksporty diagramu oraz harmonogramu.
+6. Minimum trzy ryzyka harmonogramowe, ich wpływ na plan oraz sposób reakcji.
 
 ## Materiał odniesienia
 
-Strukturę opisu researchu, wymagań i przypadków użycia można przeanalizować w §1.3, §2.1 i §2.2 pracy Tomasza Jopka, *Aplikacja mobilna: sklep z elektroniką*: [PDF pracy](https://staff-ksi.pwr.edu.pl/kopel/inz/2018.01_inz_Jopek.pdf). Korzystajcie z niej jako wzoru struktury i poziomu konkretu, cytując źródła i pisząc własnymi słowami.
+Strukturę opisu przeglądu rozwiązań, wymagań i przypadków użycia można przeanalizować w §1.3, §2.1 i §2.2 pracy Tomasza Jopka, *Aplikacja mobilna: sklep z elektroniką*: [PDF pracy](https://staff-ksi.pwr.edu.pl/kopel/inz/2018.01_inz_Jopek.pdf).

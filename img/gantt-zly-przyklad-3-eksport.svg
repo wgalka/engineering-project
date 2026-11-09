@@ -1,0 +1,75 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1150 390" width="100%" height="auto" font-family="Segoe UI, Roboto, Arial, sans-serif">
+  <rect width="1150" height="390" rx="8" fill="#ffffff" stroke="#fca5a5" stroke-width="2"/>
+
+  <!-- Top Title Bar -->
+  <rect x="0" y="0" width="1150" height="44" rx="8" fill="#7f1d1d"/>
+  <rect x="0" y="20" width="1150" height="24" fill="#7f1d1d"/>
+  <text x="18" y="27" fill="#ffffff" font-size="15" font-weight="700">ZŁY PRZYKŁAD 3: Błędy eksportu i raportowania — ucięte kolumny, „kamień milowy” na 14 dni i zaległe zadania w przeszłości</text>
+  <rect x="970" y="10" width="165" height="24" rx="12" fill="#ef4444"/>
+  <text x="1052" y="26" fill="#ffffff" font-size="12" font-weight="700" text-anchor="middle">BŁĄD RAPORTOWANIA</text>
+
+  <!-- Simulated cramped export -->
+  <rect x="18" y="58" width="1114" height="215" fill="#f8fafc" stroke="#94a3b8"/>
+  <rect x="18" y="58" width="1114" height="32" fill="#e2e8f0"/>
+  <text x="26" y="79" font-size="12" font-weight="700" fill="#1e293b">Nazwa zadania</text>
+  <text x="145" y="79" font-size="12" font-weight="700" fill="#1e293b">Data roz...</text>
+  <text x="215" y="79" font-size="12" font-weight="700" fill="#1e293b">Data zak...</text>
+  <line x1="140" y1="58" x2="140" y2="273" stroke="#cbd5e1"/>
+  <line x1="210" y1="58" x2="210" y2="273" stroke="#cbd5e1"/>
+  <line x1="280" y1="58" x2="280" y2="273" stroke="#64748b" stroke-width="2"/>
+
+  <!-- Timeline headers -->
+  <text x="360" y="79" font-size="11" fill="#475569">03.11 – 14.11</text>
+  <text x="540" y="79" font-size="11" fill="#475569">17.11 – 28.11</text>
+  <text x="720" y="79" font-size="11" fill="#475569">01.12 – 12.12</text>
+  <text x="900" y="79" font-size="11" fill="#475569">15.12 – 31.12</text>
+
+  <!-- Truncated task names & errors -->
+  <g font-size="11.5" fill="#334155">
+    <text x="26" y="112">Zaimplemento...</text>
+    <text x="145" y="112">03.11.20...</text>
+    <text x="215" y="112">14.11.20...</text>
+    <rect x="300" y="99" width="140" height="14" fill="#3b82f6"/>
+    <!-- 0% done even though it's in the past! -->
+
+    <text x="26" y="145">Przygotować b...</text>
+    <text x="145" y="145">10.11.20...</text>
+    <text x="215" y="145">21.11.20...</text>
+    <rect x="380" y="132" width="150" height="14" fill="#3b82f6"/>
+
+    <text x="26" y="178">Kamień milowy...</text>
+    <text x="145" y="178">24.11.20...</text>
+    <text x="215" y="178">12.12.20...</text>
+    <rect x="540" y="165" width="210" height="14" fill="#a855f7"/>
+
+    <text x="26" y="211">Zintegrować m...</text>
+    <text x="145" y="211">17.11.20...</text>
+    <text x="215" y="211">28.11.20...</text>
+    <rect x="460" y="198" width="140" height="14" fill="#3b82f6"/>
+  </g>
+
+  <!-- Status Date at 10.12 -->
+  <line x1="740" y1="58" x2="740" y2="273" stroke="#dc2626" stroke-width="2.5" stroke-dasharray="5,4"/>
+  <rect x="655" y="242" width="170" height="22" rx="4" fill="#dc2626"/>
+  <text x="740" y="257" fill="#ffffff" font-size="11" font-weight="700" text-anchor="middle">DZISIAJ (Raport: 10.12)</text>
+
+  <!-- Red error callout bubbles on the chart -->
+  <rect x="24" y="228" width="248" height="36" rx="4" fill="#fee2e2" stroke="#ef4444"/>
+  <text x="32" y="244" fill="#991b1b" font-size="10.5" font-weight="700">1. Ucięte nazwy zadań i dat w tabeli!</text>
+  <text x="32" y="258" fill="#991b1b" font-size="10">Nikt nie wie, co oznacza „Zaimplemento...”</text>
+
+  <rect x="300" y="226" width="330" height="38" rx="4" fill="#fee2e2" stroke="#ef4444"/>
+  <text x="310" y="242" fill="#991b1b" font-size="10.5" font-weight="700">2. Niezaktualizowane zadania w przeszłości (przed 10.12)</text>
+  <text x="310" y="256" fill="#991b1b" font-size="10">Brak 100% ukończenia i brak przesunięcia na nowy termin</text>
+
+  <rect x="765" y="154" width="350" height="38" rx="4" fill="#fee2e2" stroke="#ef4444"/>
+  <text x="775" y="170" fill="#991b1b" font-size="10.5" font-weight="700">3. Kamień milowy ma czas trwania 14 dni zamiast 0 dni!</text>
+  <text x="775" y="184" fill="#991b1b" font-size="10">Kamień milowy to punkt odbioru (romb ◆), a nie długi pasek</text>
+
+  <!-- Bottom instructions -->
+  <rect x="18" y="285" width="1114" height="90" rx="6" fill="#fef2f2" stroke="#f87171"/>
+  <text x="32" y="308" fill="#991b1b" font-size="13" font-weight="700">Cztery błędy warsztatowe widoczne na tym zrzucie:</text>
+  <text x="32" y="328" fill="#7f1d1d" font-size="12">1. Przed eksportem do PDF/PNG nie rozszerzono kolumny „Nazwa zadania” — wszystkie nazwy są ucięte wielokropkiem.</text>
+  <text x="32" y="346" fill="#7f1d1d" font-size="12">2. Jest 10 grudnia, a zadania z listopada nadal nie są ani oznaczone jako ukończone, ani zaktualizowane na grudzień + brak linii bazowej (Baseline).</text>
+  <text x="32" y="364" fill="#7f1d1d" font-size="12">3. Zadanie „Zintegrować m...” zaczyna się przed końcem swoich części składowych (brak powiązań FS), a kamień milowy rozciągnięto na 3 tygodnie.</text>
+</svg>
