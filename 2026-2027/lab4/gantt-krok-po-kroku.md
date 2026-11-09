@@ -16,6 +16,36 @@ Poprawny harmonogram Gantta określa pięć powiązanych ze sobą elementów:
 
 ---
 
+## Powiązanie narzędzi planistycznych: Roadmap, Gantt i Kanban
+
+W inżynierii oprogramowania planowanie i sterowanie pracą zespołu (oraz zadaniami wykonywanymi przez zautomatyzowane agenty programistyczne) odbywa się na trzech uzupełniających się poziomach szczegółowości. Wykres Gantta nie zastępuje tablicy Kanban ani mapy drogowej produktu — każdy z tych widoków pełni inną funkcję:
+
+- **Roadmap (Mapa drogowa) — planowane funkcjonalności i wydania:**
+  Określa kierunek rozwoju systemu w skali całego semestru lub kolejnych wersji produktu (np. `v0.1 — Pierwszy przyrost MVP`, `v0.2 — Panel administracyjny i powiadomienia`, `v1.0 — Wersja końcowa po testach akceptacyjnych`). Operuje na dużych blokach funkcjonalnych (epikach) i kamieniach milowych, bez dzielenia pracy na pojedyncze czynności techniczne.
+- **Gantt — zależności między większymi etapami i zadaniami na osi czasu:**
+  Modeluje powiązania logiczne (`FS`, `SS`, `FF`) między etapami oraz zadaniami z WBS, wyznacza ścieżkę krytyczną, zapasy czasu (*Slack*), punkty integracji komponentów oraz linię bazową (*Baseline*). Pozwala ocenić, jak opóźnienie jednego etapu wpływa na terminy kolejnych prac i datę oddania projektu.
+- **Kanban — bieżące zadania operacyjne członków zespołu i agentów:**
+  Służy do codziennego sterowania przepływem pracy w krótkim horyzoncie (bieżący tydzień lub dwutygodniowy okres raportowy). Zadania wybrane z aktualnego etapu Gantta przechodzą przez kolumny statusów (`Do wykonania → W toku → Przegląd kodu / Testy → Gotowe`) z ograniczeniem liczby zadań realizowanych jednocześnie (*WIP — Work in Progress limit*). W projektach wspomaganych przez agenty AI (np. agenty kodujące lub testujące) pojedyncza karta na tablicy Kanban reprezentuje izolowane zadanie powiązane z osobną gałęzią Git i Pull Requestem.
+
+### Porównanie widoków: Roadmap vs Gantt vs Kanban
+
+| Kryterium | Roadmap (Mapa drogowa) | Diagram Gantta | Tablica Kanban |
+|---|---|---|---|
+| **Główne przeznaczenie** | Planowane funkcjonalności, przyrosty i wydania systemu | Zależności między większymi etapami i zadaniami, ścieżka krytyczna, obciążenie w czasie | Bieżące zadania wykonawcze członków zespołu lub agentów |
+| **Podstawowe pytanie** | *Jakie funkcje wejdą do kolejnych wydań i kiedy nastąpią odbiory?* | *W jakiej kolejności muszą powstawać etapy i co opóźni termin końcowy?* | *Nad czym trwa praca w bieżącym tygodniu, co czeka na weryfikację i co jest zablokowane?* |
+| **Jednostka pracy (ziarnistość)** | Wydanie (*Release*), epik (*Epic*), przyrost funkcjonalny | Etap WBS, zadanie projektowe (4–16 h / 1–2 tygodnie), kamień milowy ($\diamond$) | Pojedyncze zgłoszenie (*Issue*), podzadanie techniczne, Pull Request (1–4 h) |
+| **Sposób reprezentacji czasu** | Przedziały czasowe (miesiące, etapy semestru, kwartały) | Dokładna oś kalendarzowa (dni robocze / tygodnie), strzałki poprzedników, *Baseline* | Brak osi czasu — liczy się status w kolumnie, kolejność priorytetów i czas przejścia (*Cycle Time*) |
+| **Narzędzia Open Source / Darmowe** | GitHub Projects (widok *Roadmap*), GitLab Roadmap, OpenProject Roadmap | **GanttProject**, **ProjectLibre Desktop**, OpenProject Gantt, Mermaid.js | GitHub Projects (widok *Board*), GitLab Issue Boards, Taiga, Plane, Focalboard |
+| **Narzędzia komercyjne** | Jira Plans / Product Discovery, Linear Roadmaps, Asana Goals, Productboard | Asana (*Gantt view*), MS Project, ClickUp Gantt, Jira Timeline / BigPicture | Jira Software (*Kanban Board*), Linear, Trello, Asana (*Board view*), YouTrack |
+
+### Przepływ pracy łączący Roadmap, Gantt i Kanban w projekcie inżynierskim
+
+1. **Poziom 1 — Roadmap (zakres wydań):** Podzielić wymagania z rozdziału 4.1 na 2–3 główne wydania (np. *Przyrost 1: MVP*, *Przyrost 2: Pełna funkcjonalność*, *Wydanie końcowe: Testy i dokumentacja*) zakończone kamieniami milowymi `M1–M3`.
+2. **Poziom 2 — Gantt (harmonogram i zależności):** Rozbić każde wydanie na etapy WBS i zadania wykonawcze (12–20 zadań), połączyć je relacjami zależności, zweryfikować obciążenie godzinowe zespołu i zapisać plan bazowy (*Baseline*) do rozdziału 4.3 dokumentacji.
+3. **Poziom 3 — Kanban (realizacja bieżąca w repozytorium):** Dla zadań przypadających na bieżące dwa tygodnie utworzyć zgłoszenia (*Issues*) na tablicy Kanban w repozytorium (GitHub Projects / GitLab Boards / Jira). Po zamknięciu kart w kolumnie `Gotowe` (wraz z zatwierdzonym commitem lub Pull Requestem) odzwierciedlić postęp na wykresie Gantta podczas dwutygodniowego raportu.
+
+---
+
 ## Organizacja pracy na laboratorium
 
 ### Wymagane materiały wejściowe
