@@ -35,8 +35,10 @@ W inżynierii oprogramowania planowanie i sterowanie pracą zespołu (oraz zadan
 | **Podstawowe pytanie** | *Jakie funkcje wejdą do kolejnych wydań i kiedy nastąpią odbiory?* | *W jakiej kolejności muszą powstawać etapy i co opóźni termin końcowy?* | *Nad czym trwa praca w bieżącym tygodniu, co czeka na weryfikację i co jest zablokowane?* |
 | **Jednostka pracy (ziarnistość)** | Wydanie (*Release*), epik (*Epic*), przyrost funkcjonalny | Etap WBS, zadanie projektowe (4–16 h / 1–2 tygodnie), kamień milowy ($\diamond$) | Pojedyncze zgłoszenie (*Issue*), podzadanie techniczne, Pull Request (1–4 h) |
 | **Sposób reprezentacji czasu** | Przedziały czasowe (miesiące, etapy semestru, kwartały) | Dokładna oś kalendarzowa (dni robocze / tygodnie), strzałki poprzedników, *Baseline* | Brak osi czasu — liczy się status w kolumnie, kolejność priorytetów i czas przejścia (*Cycle Time*) |
-| **Narzędzia Open Source / Darmowe** | GitHub Projects (widok *Roadmap*), GitLab Roadmap, OpenProject Roadmap | **GanttProject**, **ProjectLibre Desktop**, OpenProject Gantt, Mermaid.js | GitHub Projects (widok *Board*), GitLab Issue Boards, Taiga, Plane, Focalboard |
-| **Narzędzia komercyjne** | Jira Plans / Product Discovery, Linear Roadmaps, Asana Goals, Productboard | Asana (*Gantt view*), MS Project, ClickUp Gantt, Jira Timeline / BigPicture | Jira Software (*Kanban Board*), Linear, Trello, Asana (*Board view*), YouTrack |
+| **Narzędzia Open Source / Darmowe** | GitHub Projects (widok *Roadmap*), OpenProject Roadmap | **GanttProject**, **ProjectLibre Desktop**, OpenProject Gantt, Mermaid.js | GitHub Projects (widok *Board*), GitLab Issue Boards, Taiga, Plane, Focalboard |
+| **Narzędzia komercyjne** | GitLab Roadmap (**Premium / Ultimate**), Jira Plans / Product Discovery, Linear Roadmaps, Asana Goals, Productboard | Asana (*Gantt view*), MS Project, ClickUp Gantt, Jira Timeline / BigPicture | Jira Software (*Kanban Board*), Linear, Trello, Asana (*Board view*), YouTrack |
+
+GitLab Roadmap wymaga planu Premium lub Ultimate — zob. [oficjalna dokumentacja funkcji](https://docs.gitlab.com/user/group/roadmap/). Dostęp do pozostałych funkcji również należy sprawdzić dla planu używanego przez zespół.
 
 ### Przepływ pracy łączący Roadmap, Gantt i Kanban w projekcie inżynierskim
 
@@ -51,7 +53,7 @@ W inżynierii oprogramowania planowanie i sterowanie pracą zespołu (oraz zadan
 ### Wymagane materiały wejściowe
 - Zaakceptowany zakres projektu, lista wymagań funkcjonalnych (`RF-...`) i niefunkcjonalnych (`RNF-...`) oraz diagram przypadków użycia z poprzednich laboratoriów.
 - Kalendarz semestru zimowego 2026/2027 (daty kolejnych laboratoriów, dni wolne, terminy kolokwiów, wyjazdów i przerwy świątecznej).
-- Wstępnie opracowane **Kroki 1–4** z niniejszej instrukcji (przygotowanie przed zajęciami).
+- Wstępnie opracowane **Kroki 1–5** z niniejszej instrukcji: zakres, WBS, dostępność, szacunki, zależności i kamienie milowe (przygotowanie przed zajęciami).
 - Komputer z zainstalowanym programem desktopowym open source (**GanttProject** lub **ProjectLibre Desktop**) albo skonfigurowanym dostępem zespołowym do wybranego narzędzia online. Zakup płatnej licencji nie jest wymagany.
 
 ### Harmonogram pracy podczas zajęć (3 godziny lekcyjne — 135 minut)
@@ -64,6 +66,8 @@ W inżynierii oprogramowania planowanie i sterowanie pracą zespołu (oraz zadan
 | **Etap 3** | 35 min | Budowa harmonogramu projektu docelowego, przypisanie osób i usunięcie przeciążeń (Krok 7–8) | Plik `harmonogram-bazowy` bez konfliktów zasobów |
 | **Etap 4** | 20 min | Symulacja opóźnienia na ścieżce krytycznej, dodanie ryzyk i rezerwy (Krok 8–9) | Zapisany wynik eksperymentu opóźnienia + tabela ryzyk |
 | **Etap 5** | 15 min | Eksport wykresu, wzajemny przegląd z sąsiednim zespołem i weryfikacja listy kontrolnej (Krok 10–12) | Czytelny plik PDF/PNG gotowy do wstawienia w rozdz. 4.3 LaTeX |
+
+**Po zajęciach:** przygotować dodatkowy diagram techniczny do rozdziału 4.2, uzupełnić opis harmonogramu i skompilować dokumentację LaTeX. Ta praca własna nie wchodzi w powyższe 135 minut.
 
 ---
 
@@ -222,6 +226,7 @@ Przed wprowadzeniem własnego projektu do programu należy przećwiczyć oblicze
 - Zespół 3-osobowy: **Ania**, **Bartek**, **Celina**.
 - Każda osoba pracuje nad projektem równomiernie po **2 godziny dziennie** w dni robocze (`D1, D2, ...` oznaczają kolejne dni robocze; weekendy są wolne).
 - Wszystkie relacje są typu **FS (Koniec–Początek)** bez przesunięć czasowych.
+- W każdej ścieżce narzędziowej przyjąć ten sam kalendarz: start `2026-11-10`, wolne soboty, niedziele oraz `2026-11-11`. W tym przykładzie `D1 = 10.11`, `D2 = 12.11`, a `D12 = 26.11.2026`. Własny projekt wymaga dodatkowo uwzględnienia wszystkich świąt i ograniczeń dostępności w całym planowanym okresie.
 
 ### Tabela zadań, czasów i wyliczonych terminów (CPM)
 
@@ -297,7 +302,7 @@ Strona pobierania: [https://www.ganttproject.biz/download](https://www.ganttproj
 
 #### Etap A1: Konfiguracja projektu i kalendarza (na przykładzie modelu D1–D12)
 1. Uruchomić **GanttProject** i wybrać `Projekt → Nowy` (*Project → New*).
-2. W oknie kreatora wpisać nazwę `Rezerwacja sal - model referencyjny`, przejść dalej i w ustawieniach kalendarza zaznaczyć `Sobota` oraz `Niedziela` jako dni wolne, a jako kalendarz świąt wybrać `Polska`.
+2. W oknie kreatora wpisać nazwę `Rezerwacja sal - model referencyjny`, przejść dalej i w ustawieniach kalendarza zaznaczyć `Sobota` oraz `Niedziela` jako dni wolne. Wybrać kalendarz świąt `Polska` i sprawdzić, czy `11.11.2026` jest dniem wolnym; jeśli nie, dodać ten wyjątek ręcznie. Po utworzeniu zadań ustawić start zadania `A` na `10.11.2026`.
 3. Zapisać plik projektu: `Projekt → Zapisz jako...` pod nazwą `przyklad.gan`.
 4. Kliknąć prawym przyciskiem myszy nagłówek tabeli po lewej stronie i wybrać `Zarządzaj kolumnami...` (*Manage columns*). Włączyć widoczność kolumn: `ID`, `Nazwa` (*Name*), `Data rozpoczęcia` (*Begin date*), `Data zakończenia` (*End date*), `Czas trwania` (*Duration*), `Poprzednicy` (*Predecessors*), `Koordynator` / `Zasoby` (*Resources*).
 
@@ -309,8 +314,22 @@ Strona pobierania: [https://www.ganttproject.biz/download](https://www.ganttproj
 
 #### Etap A3: Łączenie zadań zależnościami i dodanie kamienia milowego
 1. Kliknąć dwukrotnie zadanie `B`, przejść do zakładki `Poprzednicy` (*Predecessors*), kliknąć `Dodaj`, wybrać zadanie `A` i relację `Koniec-Początek` (*Finish-Start*). Relację można również utworzyć przez przeciągnięcie kursora myszy od paska poprzednika do paska następnika na wykresie.
-2. Dla zadania `F (Zintegrować interfejs z API)` dodać dwóch poprzedników: `D` oraz `E`. Zweryfikować, czy data początkowa zadania `F` ustawiła się automatycznie po zakończeniu obu tych zadań (`D9`).
-3. Utworzyć wiersz `M1: Gotowość przyrostu`, otworzyć jego właściwości (`Alt+Enter`), zaznaczyć pole **Kamień milowy** (*Milestone*) i w zakładce `Poprzednicy` wskazać zadania `G` oraz `H`.
+2. W ten sam sposób uzupełnić **wszystkie** zależności z tabeli poniżej. Każda relacja ma typ `FS` i opóźnienie (*lag*) `0 dni`. Litery oznaczają nazwy zadań z modelu; numery ID nadane przez program mogą być inne.
+
+   | Zadanie | Poprzedniki |
+   |---|---|
+   | A | brak — początek projektu |
+   | B | A |
+   | C | A |
+   | D | B |
+   | E | C |
+   | F | D oraz E |
+   | G | F |
+   | H | F |
+   | M1 | G oraz H |
+
+3. Utworzyć wiersz `M1: Gotowość przyrostu`, otworzyć jego właściwości (`Alt+Enter`), zaznaczyć pole **Kamień milowy** (*Milestone*) i wskazać poprzedniki `G` oraz `H` zgodnie z tabelą.
+4. Sprawdzić wynik: `D` i `E` kończą się w `D8` (`20.11`), `F` trwa od `D9` do `D10` (`23–24.11`), a `G` i `H` kończą się w `D12` (`26.11`). Kamień milowy oznacza ukończenie tych prac. Cały model trwa **12 dni roboczych**.
 
 #### Etap A4: Zasoby i kontrola przeciążeń
 1. Przełączyć widok na zakładkę **Wykres zasobów** (*Resource Chart*).
@@ -337,8 +356,8 @@ Strona pobierania: [https://www.projectlibre.com/product/1-projectlibre-open-sou
 
 ProjectLibre posiada osobne kolumny dla **Czasu trwania (`Duration`)** i **Nakładu pracy w godzinach (`Work`)**, generuje diagram sieciowy PERT oraz wylicza zapas czasu (*Total Slack*).
 
-1. **Utworzenie projektu:** Wybrać `File → New`. Wpisać nazwę projektu, pozostawić zaznaczone `Forward Scheduled` (planowanie od daty startu) i wskazać datę początkową.
-2. **Kalendarz i dostępność:** W menu `File → Calendar` ustawić dni robocze. W arkuszu zasobów (`Resource → Resources`) określić udział czasowy każdego członka zespołu w kolumnie `Max Units` (np. `25%` dnia 8-godzinnego odpowiada `2 h dziennie`).
+1. **Utworzenie projektu:** Wybrać `File → New`. Wpisać nazwę projektu, pozostawić zaznaczone `Forward Scheduled` (planowanie od daty startu) i wskazać datę początkową `10.11.2026`.
+2. **Kalendarz i dostępność:** W menu `File → Calendar` ustawić dni robocze od poniedziałku do piątku i wyłączyć `11.11.2026`, zgodnie z Krokiem 6. W arkuszu zasobów (`Resource → Resources`) określić udział czasowy każdego członka zespołu w kolumnie `Max Units` (np. `25%` dnia 8-godzinnego odpowiada `2 h dziennie`).
 3. **Wprowadzenie zadań i WBS:**
    - W widoku `Task → Gantt` wpisać w kolumnie `Name` zadania `A`–`H` i `M1`.
    - W kolumnie `Duration` wpisać czas trwania w dniach (dla kamienia milowego `M1` wpisać `0 days`).
@@ -366,7 +385,7 @@ Przykładowy kod dla modelu referencyjnego (można go przetestować w edytorze [
 gantt
     title Harmonogram przyrostu MVP — System rezerwacji sal
     dateFormat  YYYY-MM-DD
-    excludes    weekends
+    excludes    weekends, 2026-11-11
 
     section 1. Analiza i Projekt
     A. Uzgodnić wymagania (Ania, 4h)          :crit, done, a, 2026-11-10, 2d
@@ -384,6 +403,8 @@ gantt
     M1. Gotowość przyrostu do odbioru         :milestone, crit, m1, after g h, 0d
 ```
 
+Mermaid zapisuje koniec przedziału na granicy kolejnego dnia: po pracy wykonanej do końca `26.11` znacznik `M1` może być opisany datą `27.11`. Nie oznacza to dodatkowego dnia pracy — porównywać należy 12 wykorzystanych dni roboczych i zakończenie zadań `G` oraz `H`.
+
 > **Ograniczenie:** Mermaid nie weryfikuje obciążenia zasobów ani nie wyznacza automatycznie ścieżki krytycznej (znacznik `:crit` nadawany jest ręcznie). W przypadku korzystania z Mermaida konieczne jest dołączenie tabeli obciążenia godzinowego z Kroku 3 oraz wyliczenia ścieżki krytycznej.
 
 ---
@@ -395,13 +416,13 @@ gantt
 2. **Dodatkowe atrybuty:** Dodać pole liczbowe `Nakład [h]` oraz pole tekstowe `Wymaganie / Kryterium ukończenia`. Przypisać właściciela (`Assignee`) oraz daty rozpoczęcia i zakończenia (`Start date` – `Due date`).
 3. **Widok Gantt:** Kliknąć `+` na pasku widoków i wybrać **Gantt** (widok obsługujący strukturę WBS, ścieżkę krytyczną i *Baseline*).
 4. **Zależności i automatyczne przeliczanie dat:**
-   - Połączyć paski zadań uchwytami zależności (`Dependencies`). Zadanie `F` połączyć z `D` oraz `E`.
+   - Połączyć paski zadań uchwytami zależności (`Dependencies`), wprowadzając wszystkie relacje z tabeli w Etapie A3. Daty modelu ustawić według wspólnego kalendarza z Kroku 6, z pominięciem `11.11.2026`; nie zakładać, że narzędzie automatycznie zna polskie święta.
    - W opcjach widoku Gantta (`Options → Dependency management`) włączyć automatyczne przesuwanie dat zależnych (**Maintain buffer** lub **Consume buffer**), a następnie przesunąć testowo zadanie `D` o 2 dni w prawo i zweryfikować, czy zadanie `F` oraz `M1` zmieniły daty.
 5. **Kamienie milowe i ścieżka krytyczna:**
    - Kliknąć prawym przyciskiem myszy zadanie `M1` i wybrać `Convert to Milestone`.
    - W prawym górnym rogu widoku Gantta włączyć przełącznik **Critical path**.
 6. **Linia bazowa (Baseline) i eksport:**
-   - Kliknąć przycisk **Baseline** na pasku narzędzi widoku Gantta i zaznaczyć `Set baseline for this project`.
+   - Otworzyć `Options → Dependency settings`, wskazać datę planu bazowego (*baseline date*) i sprawdzić, czy włączono `Show baseline`. Jest to data stanu projektu, z którym porównuje się plan aktualny. Zachować tę samą datę odniesienia podczas kolejnych raportów; Asana obsługuje jedną linię bazową projektu, a nowa zastępuje poprzednią. Zob. [oficjalna instrukcja Gantt view — Adding a baseline](https://help.asana.com/s/article/gantt-view).
    - Wyeksportować dane projektu (CSV/JSON) oraz wydruk PDF lub czytelne zrzuty obejmujące cały harmonogram. Sam link do konta w chmurze nie zastępuje plików w repozytorium i wykresu w dokumentacji LaTeX.
 
 #### Wskazówki dla Jira Software i MS Project
@@ -467,8 +488,8 @@ Dla każdego przeglądu należy określić **datę statusu (np. `2026-11-24`)** 
 1. **Zadania ukończone:** oznaczyć jako `100%` wyłącznie zadania spełniające zapisane kryterium ukończenia i posiadające sprawdzalny dowód (commit, pull request, diagram, wynik testu, skompilowany rozdział).
 2. **Zadania w toku:** oszacować liczbę roboczogodzin pozostałych do ukończenia zadania i na tej podstawie zaktualizować przewidywany termin końca. Upływ połowy planowanego czasu nie jest równoznaczny z wykonaniem 50% pracy.
 3. **Zadania opóźnione:** w aktualnym harmonogramie żadne otwarte zadanie nie może mieć daty zakończenia w przeszłości (przed datą statusu). Zadanie należy przesunąć na nowy termin i zweryfikować wpływ zmiany na następne zadania oraz kamienie milowe.
-4. **Opis odchylenia w raporcie:** w [raporcie postępu](../dokumentacja/szablon-raportu.md) zapisać przyczynę zmiany i jej skutek, np.:
-   > *„Zadanie T04 (Implementacja API slotów) miało zakończyć się 20.11 według planu bazowego; nowa data końca to 24.11 (+2 dni robocze) ze względu na obsługę współbieżnych zapisów. Przesuwa to zadanie T06 (Integracja UI z API), ale dzięki wykorzystaniu 2 dni z bufora T07 termin kamienia milowego M2 pozostaje bez zmian.”*
+4. **Opis odchylenia w raporcie:** w [raporcie postępu]({{ '/2026-2027/dokumentacja/szablon-raportu/' | relative_url }}) zapisać przyczynę zmiany i jej skutek, np.:
+   > *„Na dzień statusu 24.11.2026 zadanie T04 (Implementacja API slotów) miało planowany koniec 25.11 według bazy; nowa prognoza to 27.11 (+2 dni robocze) ze względu na obsługę współbieżnych zapisów. Przesuwa to zadanie T06 (Integracja UI z API). Po świadomym skróceniu rezerwy w T07 z 4 do 2 dni i potwierdzeniu dostępności Ani na 4 h poprawek termin M2 pozostaje 07.12.2026.”*
 5. **Aktualizacja dokumentacji LaTeX:** uzupełnić rozdział 4.3 o aktualny stan prac oraz zaktualizować rozdziały 4.1 lub 4.2, jeżeli w trakcie realizacji uległy zmianie wymagania lub architektura.
 
 ---
@@ -516,7 +537,7 @@ Na rysunku~\ref{fig:gantt-bazowy} przedstawiono bazowy diagram Gantta projektu w
 ```
 
 #### Dobór dodatkowego diagramu technicznego (do rozdziału 4.2)
-Diagram Gantta przedstawia rozkład pracy w czasie, natomiast architekturę, dane i zachowanie systemu opisują diagramy projektowe. W ramach laboratorium należy przygotować co najmniej jeden dodatkowy diagram do rozdziału **4.2 Opis struktury projektu** zgodnie z [przewodnikiem doboru diagramów](../narzedzia/):
+Diagram Gantta przedstawia rozkład pracy w czasie, natomiast architekturę, dane i zachowanie systemu opisują diagramy projektowe. **W ramach pracy własnej po zajęciach** należy przygotować co najmniej jeden dodatkowy diagram do rozdziału **4.2 Opis struktury projektu** zgodnie z [przewodnikiem doboru diagramów]({{ '/2026-2027/narzedzia/' | relative_url }}):
 - **Diagram ERD lub klas** — dla struktury bazy danych i relacji między encjami,
 - **Diagram sekwencji lub aktywności UML** — dla przebiegu głównego scenariusza lub algorytmu z warunkami decyzyjnymi,
 - **Diagram komponentów lub wdrożenia** — dla podziału systemu na moduły (frontend, API, baza danych, usługi zewnętrzne).
@@ -578,31 +599,31 @@ Poniżej zestawiono **dwa pełne przykłady poprawnie przygotowanych harmonogram
 
 #### Przykład 1: Aplikacja webowa — „System rezerwacji wizyt i monitorowania kolejek w dziekanacie” (Zespół 3-osobowy)
 
-Rysunek przedstawia poprawny widok harmonogramu w stylu **GanttProject / ProjectLibre** podczas dwutygodniowego raportu postępu (data statusu: `24.11`):
+Rysunek jest opracowaniem dydaktycznym w stylu **GanttProject / ProjectLibre**, przedstawiającym plan na dzień statusu `24.11.2026`. Daty, paski, zapasy i obciążenia wynikają z jednej sieci zadań. Przykładowy zespół pracuje od `02.11.2026` do `14.01.2027`; każda osoba deklaruje do **2 h w każdym dniu roboczym**. Przyjęta przerwa zespołu nie jest oficjalnym kalendarzem uczelni.
 
 ![Dobry przykład 1 — Poprawny diagram Gantta z linią bazową, ścieżką krytyczną i buforem](img/gantt-dobry-przyklad-1.svg)
 
 **Elementy składowe tego harmonogramu:**
 1. **Hierarchia WBS (czarne paski sumaryczne):** Projekt jest podzielony na 3 etapy nadrzędne (*1. Analiza i projekt architektury*, *2. Pierwszy działający przyrost MVP*, *3. Rozbudowa funkcji, testy i dokumentacja*), a pod nimi znajdują się zadania wykonawcze `T01`–`T12` nazwane w formacie `Czasownik + Rezultat`.
-2. **Powiązanie nakładu (`[h]`) z czasem trwania (`[d]`) i kontrola obciążenia:** Zadanie `T04 (12 h)` trwa `9 dni roboczych`, zgodnie z tygodniową dostępnością Bartka. W dolnym wierszu kontrolnym suma godzin zespołu w każdym tygodniu mieści się w przyjętym limicie.
-3. **Kalendarz semestru:** Okres `22.12–02.01` jest oznaczony jako przerwa świąteczna (`0 h pracy`) — zadania `T10` i `T11` są w tym okresie wstrzymane i kontynuowane w styczniu (`Tydz. 8`).
+2. **Powiązanie nakładu (`[h]`) z czasem trwania (`[d]`) i kontrola obciążenia:** Zadanie `T04 (12 h)` trwa `9 dni roboczych`. W tabeli pod wykresem podano osobno dla każdej osoby nakład i dostępną liczbę godzin w każdym tygodniu. Nakład rozłożono równomiernie po roboczych dniach zadania. Suma wynosi **96 h**, z czego **34 h** przypadają na zadania etapu MVP (`T04–T07`). Zgodność sumy zespołu z limitem nie zastępuje kontroli każdej osoby.
+3. **Kalendarz 2026/2027:** Wyłączono weekendy, `11.11.2026`, przerwę zespołu `22.12.2026–03.01.2027` oraz `06.01.2027`. Zadania `T10` i `T11` rozpoczynają się w grudniu i są kontynuowane od `04.01.2027` (`Tydz. 10`). Oś czasu obejmuje wszystkie tygodnie kalendarzowe, także tygodnie przerwy.
 4. **Ścieżka krytyczna (czerwone paski) i strzałki zależności (`FS`):** Ciąg `T01 → T02 → M1 → T04 → T06 → T07 → M2 → T08 → T10 → T12 → M3` wyznacza najwcześniejszy możliwy termin ukończenia projektu. Zadania Celiny (`T03`, `T05`, `T09`) są realizowane równolegle jako zadania niekrytyczne (niebieskie) i zbiegają się w punktach integracji.
 5. **Porównanie z linią bazową (*Baseline*) i działanie bufora (`T07`):**
    - Pod każdym paskiem zadania widoczny jest cienki **szary pasek planu bazowego** zapisanego na Laboratorium 4.
-   - Na dzień statusu (`24.11` — fioletowa linia przerywana) zadanie `T04` wydłużyło się o 2 dni robocze względem bazy, co przesunęło start integracji `T06`.
-   - Zaplanowany przed kamieniem milowym `M2` **bufor integracyjny (`T07`)** skompensował to przesunięcie, dzięki czemu termin odbioru pierwszego przyrostu (`M2`) nie uległ zmianie.
+   - Na dzień statusu (`24.11.2026` — fioletowa linia przerywana) prognoza czasu zadania `T04` wzrosła z 7 do 9 dni roboczych: termin końca zmienił się z `25.11` na `27.11`, przesuwając start integracji `T06`.
+   - W zadaniu **poprawek z rezerwą integracyjną (`T07`)** świadomie zmniejszono czas z 4 do 2 dni; pozostało 4 h pracy Ani przy dostępności 2 h dziennie. Dzięki temu termin `M2` pozostał `07.12.2026`. Samo dodanie zadania buforowego nie powoduje automatycznego skracania go przez program. Analogicznie `T12` obejmuje przygotowanie demonstracji i rezerwę; oba zadania mają wskazaną właścicielkę, nakład i czas trwania.
 
 ---
 
 #### Przykład 2: System z komponentem uczenia maszynowego — „System detekcji usterek z kamer przemysłowych” (Zespół 4-osobowy)
 
-Drugi przykład pokazuje harmonogram dla projektu 4-osobowego z zadaniem badawczym na początku oraz równoległą pracą nad czterema modułami:
+Drugi przykład pokazuje harmonogram dla projektu 4-osobowego z zadaniem badawczym na początku oraz równoległą pracą nad czterema modułami. Obowiązuje ten sam kalendarz i dostępność do 2 h na osobę w dniu roboczym co w przykładzie 1. Łączny nakład wynosi **94 h**, a czas harmonogramu — **43 dni robocze**:
 
 ![Dobry przykład 2 — Projekt 4-osobowy z zadaniem badawczym Spike i równoległymi strumieniami prac](img/gantt-dobry-przyklad-2.svg)
 
 **Elementy składowe tego harmonogramu:**
-1. **Wstępny eksperyment techniczny `S01 [SPIKE]` (fioletowy pasek):** W pierwszym tygodniu Dawid wykonuje 4-godzinny test wydajności modelu YOLO na docelowym sprzęcie. Dopiero po potwierdzeniu wyniku Marek finalizuje architekturę komunikacji (`T02`).
-2. **Równoległa praca 4 osób w Etapie 2:** Po kamieniu milowym `M1` każdy członek zespołu odpowiada za osobny moduł wykonywany w tym samym przedziale czasu (`T3–T5`):
+1. **Wstępny eksperyment techniczny `S01 [SPIKE]` (fioletowy pasek):** W pierwszym tygodniu Dawid wykonuje 4-godzinny test wydajności modelu YOLO na docelowym sprzęcie. Dopiero po potwierdzeniu wyniku Marek finalizuje architekturę komunikacji (`T02`). Gałąź `S01 → T02` trwa 9 dni roboczych, a równoległe `T01` — 6 dni. Dlatego `T01` ma **3 dni zapasu** i jest niebieskie; `S01` należy do ścieżki krytycznej mimo fioletowego wyróżnienia eksperymentu.
+2. **Równoległa praca 4 osób na początku Etapu 2:** Po kamieniu milowym `M1` każdy członek zespołu odpowiada za osobny moduł. Zadania `T03–T06` rozpoczynają się `16.11.2026` i mają różne terminy zakończenia:
    - **Dawid:** dostrojenie modelu detekcji i eksport do ONNX (`T03`),
    - **Marek:** serwis backendowy w FastAPI z bazą PostgreSQL (`T04`),
    - **Piotr:** panel operatora do podglądu klatek i alertów (`T05`),
@@ -654,11 +675,11 @@ Dodatkowe przykłady wykresów Gantta oraz oficjalne instrukcje producentów opr
 
 - **GanttProject — przykładowe projekty i dokumentacja funkcji (WBS, PERT, Baselines, zasoby):**
   - [Strona główna i zrzuty ekranu przykładowych projektów GanttProject](https://www.ganttproject.biz/)
-  - [Dokumentacja GanttProject: Task Hierarchy, Dependencies & Baselines](https://docs.ganttproject.biz/user-guide/tasks/)
+  - [Dokumentacja GanttProject: harmonogramowanie, hierarchia i zależności](https://docs.ganttproject.biz/user/scheduler/)
 - **OpenProject — przewodnik budowy wykresu Gantta i relacji w projektach IT:**
   - [OpenProject User Guide — Gantt Chart & Relations](https://www.openproject.org/docs/user-guide/gantt-chart/)
-- **GitLab Roadmap — prezentacja harmonogramów epików i kamieni milowych w projektach open source:**
-  - [GitLab Documentation — Group Roadmap](https://docs.gitlab.com/ee/user/group/roadmap/)
+- **GitLab Roadmap — harmonogramy epików i kamieni milowych (plan Premium / Ultimate):**
+  - [GitLab Documentation — Group Roadmap](https://docs.gitlab.com/user/group/roadmap/)
 - **Mermaid.js — dokumentacja i edytor online dla wykresów Gantta:**
   - [Mermaid Official Gantt Chart Syntax & Examples](https://mermaid.js.org/syntax/gantt.html)
 - **Asana — dokumentacja widoku Gantt, zależności i linii bazowej:**
