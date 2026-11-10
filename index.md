@@ -35,7 +35,7 @@ W inżynierii oprogramowania planowanie i sterowanie pracą zespołu (oraz zadan
 | **Podstawowe pytanie** | *Jakie funkcje wejdą do kolejnych wydań i kiedy nastąpią odbiory?* | *W jakiej kolejności muszą powstawać etapy i co opóźni termin końcowy?* | *Nad czym trwa praca w bieżącym tygodniu, co czeka na weryfikację i co jest zablokowane?* |
 | **Jednostka pracy (ziarnistość)** | Wydanie (*Release*), epik (*Epic*), przyrost funkcjonalny | Etap WBS, zadanie projektowe (4–16 h / 1–2 tygodnie), kamień milowy ($\diamond$) | Pojedyncze zgłoszenie (*Issue*), podzadanie techniczne, Pull Request (1–4 h) |
 | **Sposób reprezentacji czasu** | Przedziały czasowe (miesiące, etapy semestru, kwartały) | Dokładna oś kalendarzowa (dni robocze / tygodnie), strzałki poprzedników, *Baseline* | Brak osi czasu — liczy się status w kolumnie, kolejność priorytetów i czas przejścia (*Cycle Time*) |
-| **Narzędzia Open Source / Darmowe** | GitHub Projects (widok *Roadmap*), OpenProject Roadmap | **GanttProject**, **ProjectLibre Desktop**, OpenProject Gantt, Mermaid.js | GitHub Projects (widok *Board*), GitLab Issue Boards, Taiga, Plane, Focalboard |
+| **Narzędzia Open Source / Darmowe** | GitHub Projects (widok *Roadmap*), OpenProject Roadmap | **GanttProject**, **ProjectLibre Desktop**, OpenProject Gantt | GitHub Projects (widok *Board*), GitLab Issue Boards, Taiga, Plane, Focalboard |
 | **Narzędzia komercyjne** | GitLab Roadmap (**Premium / Ultimate**), Jira Plans / Product Discovery, Linear Roadmaps, Asana Goals, Productboard | Asana (*Gantt view*), MS Project, ClickUp Gantt, Jira Timeline / BigPicture | Jira Software (*Kanban Board*), Linear, Trello, Asana (*Board view*), YouTrack |
 
 GitLab Roadmap wymaga planu Premium lub Ultimate — zob. [oficjalna dokumentacja funkcji](https://docs.gitlab.com/user/group/roadmap/). Dostęp do pozostałych funkcji również należy sprawdzić dla planu używanego przez zespół.
@@ -288,7 +288,6 @@ Należy wybrać **jedną główną ścieżkę narzędziową**. Poniżej zestawio
 |---|---|---|---|
 | **GanttProject** | **Open Source** (GPLv3), aplikacja desktopowa (Windows, macOS, Linux) | Bezpłatny, działa lokalnie bez konta, obsługuje hierarchię WBS, wykres obciążenia zasobów, ścieżkę krytyczną, linie bazowe (*Baselines*) oraz eksport do PDF/PNG/CSV. | Brak jednoczesnej edycji online przez kilka osób — plik `.gan` wersjonuje się w repozytorium Git. Czas zadań podaje się w dniach roboczych. |
 | **ProjectLibre Desktop** | **Open Source** (CPAL), aplikacja desktopowa (Windows, macOS, Linux) | Bezpłatny odpowiednik MS Project: rozróżnia nakład godzinowy (*Work*) i czas trwania (*Duration*), rysuje sieć PERT/CPM, wylicza zapasy czasu (*Slack*) i obciążenie zasobów. | Mniej nowoczesny interfejs, wydruk PDF wymaga dopasowania skali strony w ustawieniach wydruku. |
-| **Mermaid.js** (Markdown / GitLab / GitHub / Draw.io) | **Open Source** (MIT), tekstowy zapis wykresu | Kod wykresu znajduje się bezpośrednio w pliku `.md` w repozytorium Git, łatwy przegląd zmian w commitach. | Brak kontroli przeciążeń zasobów i brak automatycznego przeliczania ścieżki krytycznej — wymaga prowadzenia tabeli obciążenia obok wykresu. |
 | **Asana** (plan Starter lub wyższy / wersja próbna) | **Komercyjne** (usługa w przeglądarce) | Wspólna edycja w przeglądarce, automatyczne przesuwanie zadań zależnych na widoku *Gantt*, obsługa *Baseline* i ścieżki krytycznej. | Widok *Gantt* jest funkcją płatnych planów (lub 30-dniowego okresu próbnego). Po wygaśnięciu okresu próbnego dostęp do widoku może zostać zablokowany — konieczny jest regularny eksport danych i PDF/PNG. |
 | **Jira Software** (Timeline / Plans) / **ClickUp** / **MS Project** | **Komercyjne** (freemium lub licencja uczelniana) | Integracja z tablicą zadań i repozytorium kodu (Jira), zaawansowane zarządzanie zasobami (MS Project). | W bezpłatnym planie Jiry widok *Timeline* nie wylicza pełnej ścieżki krytycznej CPM; w bezpłatnym planie ClickUp liczba użyć widoku Gantt jest ograniczona. |
 
@@ -375,45 +374,7 @@ ProjectLibre posiada osobne kolumny dla **Czasu trwania (`Duration`)** i **Nakł
 
 ---
 
-### Ścieżka C (Open Source — tekstowy opis w Git): Mermaid.js jako uzupełnienie w repozytorium
-
-Obok pliku z programu desktopowego w repozytorium Git (np. w `README.md` lub w dzienniku raportów) można utrzymywać wykres w składni **Mermaid**, który renderuje się bezpośrednio na platformach GitHub i GitLab.
-
-Poniżej przedstawiono model referencyjny w Mermaid. Krótkie etykiety A–H odpowiadają pełnym nazwom, właścicielom i nakładom pracy z tabeli w Kroku 6. Daty na osi zapisano jako dzień i miesiąc, z podziałką co 3 dni kalendarzowe. Kod można przetestować w edytorze [Mermaid Live](https://mermaid.live).
-
-```mermaid
-%%{init: {"gantt": {"barHeight": 28, "barGap": 12, "topPadding": 55, "leftPadding": 100, "rightPadding": 120, "fontSize": 14, "sectionFontSize": 14, "useMaxWidth": true}}}%%
-gantt
-    title Przyrost MVP — listopad 2026
-    dateFormat  YYYY-MM-DD
-    axisFormat  %d.%m
-    tickInterval 3day
-    todayMarker off
-    excludes    weekends, 2026-11-11
-
-    section Projekt
-    A. Wymagania      :crit, done, a, 2026-11-10, 2d
-    B. Dane           :crit, active, b, after a, 2d
-    C. Makiety        :crit, c, after a, 3d
-
-    section Budowa
-    D. API            :crit, d, after b, 4d
-    E. Interfejs      :crit, e, after c, 3d
-
-    section Odbiór
-    F. Integracja     :crit, f, after d e, 2d
-    G. Testy          :crit, g, after f, 2d
-    H. Instrukcja     :crit, h, after f, 2d
-    M1. Gotowe        :milestone, crit, m1, after g h, 0d
-```
-
-Mermaid zapisuje koniec przedziału na granicy kolejnego dnia: po pracy wykonanej do końca `26.11` znacznik `M1` może być opisany datą `27.11`. Nie oznacza to dodatkowego dnia pracy — porównywać należy 12 wykorzystanych dni roboczych i zakończenie zadań `G` oraz `H`.
-
-> **Ograniczenie:** Mermaid nie weryfikuje obciążenia zasobów ani nie wyznacza automatycznie ścieżki krytycznej (znacznik `:crit` nadawany jest ręcznie). W przypadku korzystania z Mermaida konieczne jest dołączenie tabeli obciążenia godzinowego z Kroku 3 oraz wyliczenia ścieżki krytycznej.
-
----
-
-### Ścieżka D (Narzędzia komercyjne): Asana, Jira Timeline, MS Project, ClickUp
+### Ścieżka C (Narzędzia komercyjne): Asana, Jira Timeline, MS Project, ClickUp
 
 #### Instrukcja krok po kroku dla Asany (widok Gantt)
 1. **Struktura projektu:** Utworzyć projekt w Asanie. W widoku `List` dodać sekcje odpowiadające etapom WBS (`1. Analiza`, `2. Projekt`, `3. Pierwszy przyrost` itd.) i wprowadzić zadania.
@@ -684,7 +645,5 @@ Dodatkowe przykłady wykresów Gantta oraz oficjalne instrukcje producentów opr
   - [OpenProject User Guide — Gantt Chart & Relations](https://www.openproject.org/docs/user-guide/gantt-chart/)
 - **GitLab Roadmap — harmonogramy epików i kamieni milowych (plan Premium / Ultimate):**
   - [GitLab Documentation — Group Roadmap](https://docs.gitlab.com/user/group/roadmap/)
-- **Mermaid.js — dokumentacja i edytor online dla wykresów Gantta:**
-  - [Mermaid Official Gantt Chart Syntax & Examples](https://mermaid.js.org/syntax/gantt.html)
 - **Asana — dokumentacja widoku Gantt, zależności i linii bazowej:**
   - [Asana Help Center — Gantt view](https://help.asana.com/s/article/gantt-view)

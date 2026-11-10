@@ -5,7 +5,7 @@ permalink: /2026-2027/narzedzia/
 
 # Przewodnik: harmonogram Gantta i dobór diagramów projektowych
 
-**Pełna instrukcja laboratoryjna: [Diagram Gantta krok po kroku](../lab4/gantt-krok-po-kroku.md)** — planowanie pracy, model referencyjny z obliczeniami, instrukcje dla programów GanttProject, ProjectLibre, Mermaid i Asana, kontrola obciążenia, analiza ryzyk, raportowanie dwutygodniowe oraz przykłady wzorcowych i błędnych wykresów. Poniżej znajduje się podsumowanie zasad oraz przewodnik doboru dodatkowych diagramów projektowych.
+**Pełna instrukcja laboratoryjna: [Diagram Gantta krok po kroku](../lab4/gantt-krok-po-kroku.md)** — planowanie pracy, model referencyjny z obliczeniami, instrukcje dla programów GanttProject, ProjectLibre i Asana, kontrola obciążenia, analiza ryzyk, raportowanie dwutygodniowe oraz przykłady wzorcowych i błędnych wykresów. Poniżej znajduje się podsumowanie zasad oraz przewodnik doboru dodatkowych diagramów projektowych.
 
 Raport postępu i aktualizacja dokumentacji obowiązują na każdym laboratorium; szczegółowy układ rozdziałów znajduje się w [przewodniku dokumentacji i raportowania](../dokumentacja/).
 
@@ -60,7 +60,6 @@ Szczegółowe porównanie oraz instrukcje krok po kroku dla poszczególnych narz
 
 - **[GanttProject](https://www.ganttproject.biz/download) (Open Source, GPLv3)** — program desktopowy obsługujący hierarchię WBS, zależności, kamienie milowe, wykres obciążenia zasobów, ścieżkę krytyczną, linie bazowe i eksport PDF/PNG (Windows, macOS, Linux).
 - **[ProjectLibre Desktop](https://projectlibre.com/projectlibre-desktop/) (Open Source, CPAL)** — program desktopowy rozróżniający nakład godzinowy (*Work*) i czas trwania (*Duration*), wyposażony w sieć PERT/CPM, wyliczanie zapasów czasu (*Slack*) i bazę porównawczą; [dokumentacja](https://projectlibre.com/projectlibre-documentation/).
-- **[Mermaid.js](https://mermaid.js.org/syntax/gantt.html) (Open Source, MIT)** — tekstowy zapis wykresu Gantta w repozytorium Git (uzupełnienie dokumentacji wymagające osobnej tabeli obciążenia zasobów).
 - **Narzędzia komercyjne (Asana, Jira Timeline/Plans, MS Project, ClickUp)** — możliwe do wykorzystania przy posiadaniu aktywnego dostępu zespołowego, pod warunkiem zachowania pełnego eksportu danych oraz czytelnych wydruków PDF/PNG w repozytorium.
 
 Należy wybrać jedną główną ścieżkę narzędziową i zachować plik źródłowy oraz eksport PDF/PNG z czytelnymi nazwami zadań, datami, strzałkami zależności, kamieniami milowymi i przypisanymi osobami.
