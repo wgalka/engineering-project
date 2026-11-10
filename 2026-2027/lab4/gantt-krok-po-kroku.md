@@ -102,12 +102,12 @@ W dokumentacji roboczej należy zapisać w trzech punktach:
 
 **WBS (Work Breakdown Structure)** to hierarchiczny podział projektu na mniejsze zadania wykonawcze. Zamiast pojedynczego paska „Programowanie (6 tygodni)”, należy utworzyć **6 etapów nadrzędnych (grup sumarycznych)** i przyporządkować do nich zadania szczegółowe:
 
-1. **1. Analiza i domknięcie wymagań** (doprecyzowanie modelu danych, weryfikacja danych wejściowych)
-2. **2. Projekt rozwiązania** (architektura, schemat bazy danych ERD, makiety interfejsu, specyfikacja API)
-3. **3. Pierwszy działający przyrost (MVP)** (szkielet aplikacji, główny scenariusz od interfejsu do bazy danych)
-4. **4. Rozbudowa funkcji** (pozostałe wymagania funkcjonalne, walidacja danych, obsługa błędów)
-5. **5. Integracja, testy i poprawki** (testy scenariuszy użycia, testy niefunkcjonalne, naprawa wykrytych błędów)
-6. **6. Dokumentacja i oddanie** (rozdziały 4.1–4.5 w LaTeX, instrukcja uruchomienia `README`, przygotowanie prezentacji i demonstracji)
+1. **Analiza i domknięcie wymagań** (doprecyzowanie modelu danych, weryfikacja danych wejściowych)
+2. **Projekt rozwiązania** (architektura, schemat bazy danych ERD, makiety interfejsu, specyfikacja API)
+3. **Pierwszy działający przyrost (MVP)** (szkielet aplikacji, główny scenariusz od interfejsu do bazy danych)
+4. **Rozbudowa funkcji** (pozostałe wymagania funkcjonalne, walidacja danych, obsługa błędów)
+5. **Integracja, testy i poprawki** (testy scenariuszy użycia, testy niefunkcjonalne, naprawa wykrytych błędów)
+6. **Dokumentacja i oddanie** (rozdziały 4.1–4.5 w LaTeX, instrukcja uruchomienia `README`, przygotowanie prezentacji i demonstracji)
 
 #### Zasady definiowania zadań w WBS
 - **Nazwa zadania = czasownik + konkretny rezultat:** należy stosować zapis typu *„Zaimplementować endpoint `POST /reservations` z walidacją kolizji terminów”* zamiast ogólników typu *„Backend”*.
@@ -379,28 +379,32 @@ ProjectLibre posiada osobne kolumny dla **Czasu trwania (`Duration`)** i **Nakł
 
 Obok pliku z programu desktopowego w repozytorium Git (np. w `README.md` lub w dzienniku raportów) można utrzymywać wykres w składni **Mermaid**, który renderuje się bezpośrednio na platformach GitHub i GitLab.
 
-Przykładowy kod dla modelu referencyjnego (można go przetestować w edytorze [https://mermaid.live](https://mermaid.live)):
+Poniżej przedstawiono model referencyjny w Mermaid. Krótkie etykiety A–H odpowiadają pełnym nazwom, właścicielom i nakładom pracy z tabeli w Kroku 6. Daty na osi zapisano jako dzień i miesiąc, z podziałką co 3 dni kalendarzowe. Kod można przetestować w edytorze [Mermaid Live](https://mermaid.live).
 
 ```mermaid
+%%{init: {"gantt": {"barHeight": 28, "barGap": 12, "topPadding": 55, "leftPadding": 100, "rightPadding": 120, "fontSize": 14, "sectionFontSize": 14, "useMaxWidth": true}}}%%
 gantt
-    title Harmonogram przyrostu MVP — System rezerwacji sal
+    title Przyrost MVP — listopad 2026
     dateFormat  YYYY-MM-DD
+    axisFormat  %d.%m
+    tickInterval 3day
+    todayMarker off
     excludes    weekends, 2026-11-11
 
-    section 1. Analiza i Projekt
-    A. Uzgodnić wymagania (Ania, 4h)          :crit, done, a, 2026-11-10, 2d
-    B. Model danych i migracja (Bartek, 4h)   :crit, active, b, after a, 2d
-    C. Makiety ekranów (Celina, 6h)           :crit, c, after a, 3d
+    section Projekt
+    A. Wymagania      :crit, done, a, 2026-11-10, 2d
+    B. Dane           :crit, active, b, after a, 2d
+    C. Makiety        :crit, c, after a, 3d
 
-    section 2. Implementacja MVP
-    D. Wykonać API rezerwacji (Bartek, 8h)    :crit, d, after b, 4d
-    E. Wykonać interfejs UI (Celina, 6h)      :crit, e, after c, 3d
+    section Budowa
+    D. API            :crit, d, after b, 4d
+    E. Interfejs      :crit, e, after c, 3d
 
-    section 3. Integracja i Odbiór
-    F. Integracja UI z API (Ania, 4h)         :crit, f, after d e, 2d
-    G. Test głównego scenariusza (Ania, 4h)   :crit, g, after f, 2d
-    H. Instrukcja uruchomienia (Celina, 4h)   :crit, h, after f, 2d
-    M1. Gotowość przyrostu do odbioru         :milestone, crit, m1, after g h, 0d
+    section Odbiór
+    F. Integracja     :crit, f, after d e, 2d
+    G. Testy          :crit, g, after f, 2d
+    H. Instrukcja     :crit, h, after f, 2d
+    M1. Gotowe        :milestone, crit, m1, after g h, 0d
 ```
 
 Mermaid zapisuje koniec przedziału na granicy kolejnego dnia: po pracy wykonanej do końca `26.11` znacznik `M1` może być opisany datą `27.11`. Nie oznacza to dodatkowego dnia pracy — porównywać należy 12 wykorzystanych dni roboczych i zakończenie zadań `G` oraz `H`.
@@ -521,7 +525,7 @@ W rozdziale **4.3 Harmonogram realizacji projektu** należy zawrzeć:
 
 Przykładowy kod LaTeX do wstawienia wykresu:
 
-```latex
+```text
 \subsection{Harmonogram realizacji projektu i kontrola wersji}
 
 Prace projektowe podzielono w strukturze WBS na sześć etapów obejmujących zadania od analizy wymagań po testy akceptacyjne i przygotowanie dokumentacji. Kod źródłowy oraz dokumentacja są wersjonowane w repozytorium Git, gdzie każde zadanie harmonogramu odpowiada osobnemu zgłoszeniu (ang. \textit{issue}) oraz gałęzi roboczej weryfikowanej przed włączeniem do gałęzi głównej.
